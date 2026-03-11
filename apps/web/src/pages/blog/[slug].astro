@@ -1,0 +1,24 @@
+---
+import dayjs from 'dayjs';
+import type { APIContext } from 'astro';
+
+export async function getStaticPaths() {
+  return { paths: [], fallback: 'blocking' };
+}
+
+export async function GET({ params, request }: APIContext) {
+  const slug = params.slug as string;
+  const url = new URL(request.url);
+  const origin = `${url.protocol}//${url.host}`;
+  const res = await fetch(`${origin}/api/posts/${slug}`);
+  if (!res.ok) return new Response('Not found', { status: 404 });
+  const post = await res.json();
+  const readMins = Math.max(2, Math.ceil(post.content.split(' ').length / 200));
+  return new Response(`<!doctype html><html><head><title>${post.title}</title><meta name="description" content="${post.meta_description}" /><meta property="og:title" content="${post.title}" /><meta property="og:description" content="${post.meta_description}" /></head><body>
+    <article style="max-width:720px;margin:32px auto;font-family:system-ui;line-height:1.6;">
+      <p style="color:#6b7280;">${dayjs(post.published_at).format('MMM D, YYYY')} • ${readMins} min read</p>
+      <h1>${post.title}</h1>
+      <div>${post.content}</div>
+    </article></body></html>`
+  , { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+}

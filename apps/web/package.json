@@ -1,0 +1,30 @@
+{
+  "name": "modu-auto-web",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^11.0.0",
+    "@astrojs/react": "^4.0.0",
+    "@tanstack/react-query": "^5.52.0",
+    "astro": "^4.6.0",
+    "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
+    "nanoid": "^5.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zod": "^4.23.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  }
+}

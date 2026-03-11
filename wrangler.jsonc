@@ -1,0 +1,43 @@
+{
+  "name": "modu-auto-api",
+  "main": "workers/api/src/index.ts",
+  "compatibility_date": "2024-12-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    { "binding": "DB", "database_name": "modu-auto-db", "database_id": "<to-fill>" }
+  ],
+  "kv_namespaces": [
+    { "binding": "CACHE", "id": "<to-fill>" }
+  ],
+  "r2_buckets": [
+    { "binding": "MEDIA", "bucket_name": "modu-auto-media" }
+  ],
+  "queues": [
+    { "binding": "QUEUE", "queue": "modu-auto-jobs" }
+  ],
+  "analytics_engine_datasets": [
+    { "binding": "ANALYTICS", "dataset": "modu_auto_events" }
+  ],
+  "env": {
+    "production": {}
+  },
+  "routes": [
+    { "pattern": "api.*/*", "zone_name": "<your-zone>", "script": "modu-auto-api" }
+  ],
+  "dispatch_namespaces": [],
+  "services": [
+    {
+      "name": "modu-auto-queues",
+      "script": "workers/queues/src/index.ts"
+    },
+    {
+      "name": "modu-auto-cron",
+      "script": "workers/cron/src/index.ts",
+      "triggers": { "crons": ["0 */3 * * *"] }
+    },
+    {
+      "name": "modu-auto-email",
+      "script": "workers/email/src/index.ts"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+---
+import Installer from '../components/Installer';
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autoblog Installer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #0b1021;
+        --panel: #11172e;
+        --accent: #6d8dff;
+        --accent-2: #57f2cc;
+        --text: #e6ecff;
+      }
+      body {
+        margin: 0;
+        background: radial-gradient(circle at 20% 20%, rgba(87, 242, 204, 0.12), transparent 35%),
+          radial-gradient(circle at 80% 0%, rgba(109, 141, 255, 0.15), transparent 40%),
+          var(--bg);
+        color: var(--text);
+        font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+        min-height: 100vh;
+      }
+      a { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <Installer client:load />
+  </body>
+</html>

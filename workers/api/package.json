@@ -1,0 +1,17 @@
+{
+  "name": "modu-auto-api",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240222.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "itty-router": "^4.0.27"
+  }
+}
